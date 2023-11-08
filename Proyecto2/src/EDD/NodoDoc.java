@@ -14,6 +14,7 @@ public class NodoDoc {
     private String type; //Posiblemente un int
     private NodoDoc pNext;
     private boolean status;
+    private NodoDoc derecha,izquierda;
 
     /**
      * Constructor
@@ -110,6 +111,22 @@ public class NodoDoc {
      */
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public NodoDoc getDerecha() {
+        return derecha;
+    }
+
+    public void setDerecha(NodoDoc derecha) {
+        this.derecha = derecha;
+    }
+
+    public NodoDoc getIzquierda() {
+        return izquierda;
+    }
+
+    public void setIzquierda(NodoDoc izquierda) {
+        this.izquierda = izquierda;
     }
     
          
