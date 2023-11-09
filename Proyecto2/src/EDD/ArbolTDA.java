@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package EDD;
+import java.lang.String;
 
 /**
  *
@@ -32,5 +33,16 @@ public class ArbolTDA {
         }else{
             return existe(nodo.getIzquierda(), busqueda);
         }
+    }
+    
+    public void insertar(NodoDoc nodo ,String name, int size, String type) {
+        if (this.nodoRaiz == null) {
+            this.nodoRaiz = new NodoDoc(String name, int size, String type);
+        } else {
+            this.insertar(this.nodoRaiz,String name, int size, String type);
+        }
+    }
+    private void insertar(NodoDoc nodo,String name, int size, String type ){
+      
     }
 }
