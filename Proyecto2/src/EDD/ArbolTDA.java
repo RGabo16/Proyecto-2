@@ -10,17 +10,17 @@ package EDD;
  * @author rgabr
  */
 public class ArbolTDA {
-    NodoDoc nodoRaiz;
+    Document nodoRaiz;
 
-    public NodoDoc getNodoRaiz() {
+    public Document getNodoRaiz() {
         return nodoRaiz;
     }
 
-    public void setNodoRaiz(NodoDoc nodoRaiz) {
+    public void setNodoRaiz(Document nodoRaiz) {
         this.nodoRaiz = nodoRaiz;
     }
     
-    public boolean existe(NodoDoc nodo, int busqueda){
+    public boolean existe(Document nodo, int busqueda){
         if (nodo == null){
             return false;
         }
