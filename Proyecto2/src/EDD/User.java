@@ -21,6 +21,12 @@ public class User {
         this.PNext = null;
     }
 
+    public User(String usuario, String tipo) {
+        this.usuario = usuario;
+        this.tipo = tipo;
+        this.documentos = null;
+        this. PNext = null;
+    }
     
     public String getUsuario() {
         return usuario;

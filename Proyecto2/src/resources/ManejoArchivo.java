@@ -10,7 +10,8 @@ import java.io.FileReader;
 //import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import EDD.Lista;
-//import EDD.Nodo;
+import EDD.User;
+import EDD.Nodo;
 
 /**
  *
@@ -55,7 +56,7 @@ public class ManejoArchivo {
     public Lista read_csv() {
         Lista clientes = new Lista();
         String line;
-        String clientes_csv = "";
+        String file_csv = "";
         String path = "test//clientes.csv";
         File file = new File(path);
         try {
@@ -66,14 +67,16 @@ public class ManejoArchivo {
                 BufferedReader br = new BufferedReader(fr);
                 while ((line = br.readLine()) != null) {
                     if (!line.isEmpty()) {
-                        clientes_csv += line + "\n";
+                        file_csv += line + "\n";
                     }
                 }
-                if (!"".equals(clientes_csv)) {
-                    String[] clientes_split = clientes_csv.split("\n");
-                    for (int i = 0; i < clientes_split.length; i++) {
-                        String[] cliente = clientes_split[i].split(",");
-                        clientes.addAtTheEnd(cliente[0]); //agregar user y type en String
+                if (!"".equals(file_csv)) {
+                    String[] user_split = file_csv.split("\n");
+                    for (int i = 0; i < user_split.length; i++) {
+                        String[] user_att = user_split[i].split(",");
+                        User user = new User(user_att[0], user_att[1]);
+                        Nodo newNodo = new Nodo(user);
+                        clientes.addAtTheEnd(newNodo);
                     }
                 }
                 br.close();
