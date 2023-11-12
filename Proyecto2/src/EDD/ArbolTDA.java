@@ -33,4 +33,28 @@ public class ArbolTDA {
             return existe(nodo.getIzquierda(), busqueda);
         }
     }
+    public void insertar(String name, int size, String type) {
+        if (this.nodoRaiz == null) {
+            this.nodoRaiz = new Document( name,  size,  type);
+        } else {
+            this.insertar(this.nodoRaiz, name,  size,  type);
+        }
+    }
+    private void insertar(Document nodo,String name, int size, String type ){
+      
+       if (size > nodo.getSize()) {
+            if (nodo.getDerecha() == null) {
+                nodo.setDerecha(new Document(name,size,type));
+            } else {
+                this.insertar(nodo.getDerecha(), name,size,type);
+            }
+        } else {
+            if (nodo.getIzquierda() == null) {
+                nodo.setIzquierda(new Document(name,size,type));
+            } else {
+                this.insertar(nodo.getIzquierda(), name, size ,type);
+            }
+        }
+    }
 }
+
