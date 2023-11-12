@@ -9,12 +9,12 @@ package EDD;
  *
  * @author rgabr
  */
-public class NodoUsuario {
-    String usuario,tipo ;
-    ListaDoc documentos;
-    NodoUsuario PNext;
+public class User {
+    private String usuario,tipo ;
+    private Lista documentos;
+    private User PNext;
 
-    public NodoUsuario(String usuario, String tipo, ListaDoc documentos) {
+    public User(String usuario, String tipo, Lista documentos) {
         this.usuario = usuario;
         this.tipo = tipo;
         this.documentos = documentos;
@@ -38,19 +38,19 @@ public class NodoUsuario {
         this.tipo = tipo;
     }
 
-    public ListaDoc getDocumentos() {
+    public Lista getDocumentos() {
         return documentos;
     }
 
-    public void setDocumentos(ListaDoc documentos) {
+    public void setDocumentos(Lista documentos) {
         this.documentos = documentos;
     }
 
-    public NodoUsuario getPNext() {
+    public User getPNext() {
         return PNext;
     }
 
-    public void setPNext(NodoUsuario PNext) {
+    public void setPNext(User PNext) {
         this.PNext = PNext;
     }
     

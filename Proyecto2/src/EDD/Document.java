@@ -8,13 +8,13 @@ package EDD;
  *
  * @author Luriannys Junco
  */
-public class NodoDoc {
+public class Document {
     private String name;
     private int size;
     private String type; //Posiblemente un int
-    private NodoDoc pNext;
+    private Document pNext;
     private boolean status;
-    private NodoDoc derecha,izquierda;
+    private Document derecha,izquierda;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ public class NodoDoc {
      * @param size
      * @param type 
      */
-    public NodoDoc(String name, int size, String type) {
+    public Document(String name, int size, String type) {
         this.name = name;
         this.size = size;
         this.type = type;
@@ -35,7 +35,7 @@ public class NodoDoc {
      * @param name
      * @param size
      */
-    public NodoDoc(String name, int size) {
+    public Document(String name, int size) {
          this.name = name;
         this.size = size;
         this.type = "";
@@ -88,14 +88,14 @@ public class NodoDoc {
     /**
      * @return the pNext
      */
-    public NodoDoc getpNext() {
+    public Document getpNext() {
         return pNext;
     }
 
     /**
      * @param pNext the pNext to set
      */
-    public void setpNext(NodoDoc pNext) {
+    public void setpNext(Document pNext) {
         this.pNext = pNext;
     }
 
@@ -113,19 +113,19 @@ public class NodoDoc {
         this.status = status;
     }
 
-    public NodoDoc getDerecha() {
+    public Document getDerecha() {
         return derecha;
     }
 
-    public void setDerecha(NodoDoc derecha) {
+    public void setDerecha(Document derecha) {
         this.derecha = derecha;
     }
 
-    public NodoDoc getIzquierda() {
+    public Document getIzquierda() {
         return izquierda;
     }
 
-    public void setIzquierda(NodoDoc izquierda) {
+    public void setIzquierda(Document izquierda) {
         this.izquierda = izquierda;
     }
     
