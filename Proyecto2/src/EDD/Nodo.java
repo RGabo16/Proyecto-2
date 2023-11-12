@@ -17,6 +17,10 @@ public class Nodo {
         this.pNext = pNext;
     }
 
+    /**
+     * Constructor
+     * @param element 
+     */
     public Nodo(Object element) {
         this.element = element;
         this.pNext = null;

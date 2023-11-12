@@ -10,7 +10,8 @@ import java.io.FileReader;
 //import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import EDD.Lista;
-//import EDD.NodoDoc;
+//import EDD.Nodo;
+
 /**
  *
  * @author Luriannys Junco
