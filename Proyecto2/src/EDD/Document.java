@@ -12,9 +12,7 @@ public class Document {
     private String name;
     private int size;
     private String type; //Posiblemente un int
-    private Document pNext;
     private boolean status;
-    private Document derecha,izquierda;
 
     /**
      * Constructor
@@ -26,7 +24,6 @@ public class Document {
         this.name = name;
         this.size = size;
         this.type = type;
-        this.pNext = null;
         this.status = false; //No esta en la cola de impresion
     }
 
@@ -39,11 +36,11 @@ public class Document {
          this.name = name;
         this.size = size;
         this.type = "";
-        this.pNext = null;
         this.status = false; //No esta en la cola de impresion
     }
 
     /**
+     * getName
      * @return the name
      */
     public String getName() {
@@ -51,6 +48,7 @@ public class Document {
     }
 
     /**
+     * setName
      * @param name the name to set
      */
     public void setName(String name) {
@@ -58,6 +56,7 @@ public class Document {
     }
 
     /**
+     * getSize
      * @return the size
      */
     public int getSize() {
@@ -65,6 +64,7 @@ public class Document {
     }
 
     /**
+     * setSize
      * @param size the size to set
      */
     public void setSize(int size) {
@@ -72,6 +72,7 @@ public class Document {
     }
 
     /**
+     * getType
      * @return the type
      */
     public String getType() {
@@ -79,6 +80,7 @@ public class Document {
     }
 
     /**
+     * setType
      * @param type the type to set
      */
     public void setType(String type) {
@@ -86,23 +88,10 @@ public class Document {
     }
 
     /**
-     * @return the pNext
-     */
-    public Document getpNext() {
-        return pNext;
-    }
-
-    /**
-     * @param pNext the pNext to set
-     */
-    public void setpNext(Document pNext) {
-        this.pNext = pNext;
-    }
-
-    /**
+     * getStatus
      * @return the status
      */
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -111,24 +100,7 @@ public class Document {
      */
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public Document getDerecha() {
-        return derecha;
-    }
-
-    public void setDerecha(Document derecha) {
-        this.derecha = derecha;
-    }
-
-    public Document getIzquierda() {
-        return izquierda;
-    }
-
-    public void setIzquierda(Document izquierda) {
-        this.izquierda = izquierda;
-    }
-    
+    } 
          
        
 }
