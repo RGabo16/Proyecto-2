@@ -27,6 +27,7 @@ public class Nodo {
     }
 
     /**
+     * getElement
      * @return the element
      */
     public Object getElement() {
@@ -34,6 +35,7 @@ public class Nodo {
     }
 
     /**
+     * setElement
      * @param element the element to set
      */
     public void setElement(Object element) {
@@ -41,6 +43,7 @@ public class Nodo {
     }
 
     /**
+     * getpNext
      * @return the pNext
      */
     public Nodo getpNext() {
@@ -48,18 +51,12 @@ public class Nodo {
     }
 
     /**
+     * setpNext
      * @param pNext the pNext to set
      */
     public void setpNext(Nodo pNext) {
         this.pNext = pNext;
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     

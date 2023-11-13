@@ -10,54 +10,98 @@ package EDD;
  * @author rgabr
  */
 public class User {
-    private String usuario,tipo ;
+    private String usuario;
+    private String tipo ;
     private Lista documentos;
-    private User PNext;
+    private User pNext;
 
+    /**
+     * Constructor
+     * @param usuario
+     * @param tipo
+     * @param documentos 
+     */
     public User(String usuario, String tipo, Lista documentos) {
         this.usuario = usuario;
         this.tipo = tipo;
         this.documentos = documentos;
-        this.PNext = null;
+        this.pNext = null;
     }
 
+    /**
+     * Constructor
+     * @param usuario
+     * @param tipo 
+     */
     public User(String usuario, String tipo) {
         this.usuario = usuario;
         this.tipo = tipo;
         this.documentos = null;
-        this. PNext = null;
+        this. pNext = null;
     }
     
+    /**
+     * getUsuario
+     * @return 
+     */
     public String getUsuario() {
         return usuario;
     }
 
+    /**
+     * setUsuario
+     * @param usuario 
+     */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     * getTipo
+     * @return 
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * setTipo
+     * @param tipo 
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * getDocumentos
+     * @return 
+     */
     public Lista getDocumentos() {
         return documentos;
     }
 
+    /**
+     * setDocumentos
+     * @param documentos 
+     */
     public void setDocumentos(Lista documentos) {
         this.documentos = documentos;
     }
 
+    /**
+     * getPNext
+     * @return 
+     */
     public User getPNext() {
-        return PNext;
+        return pNext;
     }
 
+    /**
+     * setPNext
+     * @param PNext 
+     */
     public void setPNext(User PNext) {
-        this.PNext = PNext;
+        this.pNext = PNext;
     }
     
     
