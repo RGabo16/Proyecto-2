@@ -73,7 +73,20 @@ public class ArbolTDA {
             }
         }
     }
-
+    
+      /**
+     * Imprimir inorden
+     * @param n 
+     */
+//    private void inorden(Nodo n) {
+//        Document document = (Document) n.getElement();
+//        if (n != null) {
+//            inorden(this.getIzquierda());
+//            n.imprimirDato();
+//            inorden(this.getDerecha());
+//        }
+//    }
+    
     /**
      * getNodoRaiz
      * @return 
@@ -122,5 +135,6 @@ public class ArbolTDA {
         this.izquierda = izquierda;
     }
     
+  
     
 }
