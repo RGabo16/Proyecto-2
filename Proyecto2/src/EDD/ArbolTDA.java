@@ -11,9 +11,13 @@ package EDD;
  */
 public class ArbolTDA {
     private Nodo nodoRaiz;
-    private Nodo derecha;
-    private Nodo izquierda;
 
+    
+    
+    
+    public ArbolTDA(){
+        nodoRaiz=null;
+    }
     
     /**
      * existe
@@ -30,9 +34,9 @@ public class ArbolTDA {
             return true;
         }
         else if (document.getSize() < busqueda){
-            return existe(this.getDerecha(), busqueda);
+            return existe(nodo.getDerecha(), busqueda);
         }else{
-            return existe(this.getIzquierda(), busqueda);
+            return existe(nodo.getIzquierda(), busqueda);
         }
     }
     
@@ -60,32 +64,58 @@ public class ArbolTDA {
     private void insertar(Nodo nodo,String name, int size, String type){
       Document document = (Document) nodo.getElement();
        if (size > document.getSize()) {
-            if (this.getDerecha() == null) {
-                this.setDerecha(new Nodo(new Document(name,size,type)));
+            if (nodo.getDerecha() == null) {
+                nodo.setDerecha(new Nodo(new Document(name,size,type)));
             } else {
-                this.insertar(this.getDerecha(), name,size,type);
+                this.insertar(nodo.getDerecha(), name,size,type);
             }
         } else {
-            if (this.getIzquierda() == null) {
-                this.setIzquierda(new Nodo(new Document(name,size,type)));
+            if (nodo.getIzquierda() == null) {
+                nodo.setIzquierda(new Nodo(new Document(name,size,type)));
             } else {
-                this.insertar(this.getIzquierda(), name, size ,type);
+                this.insertar(nodo.getIzquierda(), name, size ,type);
             }
         }
     }
     
-      /**
-     * Imprimir inorden
-     * @param n 
-     */
-//    private void inorden(Nodo n) {
-//        Document document = (Document) n.getElement();
-//        if (n != null) {
-//            inorden(this.getIzquierda());
-//            n.imprimirDato();
-//            inorden(this.getDerecha());
-//        }
-//    }
+    /**
+     * ObtenerFe
+     * @param n   
+     * @return    
+    */
+    public int obtenerFe(Nodo n){
+        if (n==null)
+            return -1;
+        else
+            return n.getFe();
+    }
+    
+    /**
+     * rotacionIzquierda
+     * @param n   
+     * @return    
+    */
+    public Nodo rotacionIzquierda(Nodo n){
+        Nodo aux=n.getIzquierda();
+        n.setIzquierda(aux.getDerecha());
+        aux.setDerecha(n);
+        n.setFe(Math.max(obtenerFe(n.getIzquierda()), obtenerFe(n.getDerecha()))+1);
+        aux.setFe(Math.max(obtenerFe(aux.getIzquierda()), obtenerFe(aux.getDerecha()))+1);
+        return aux;
+    }
+    /**
+    * Imprimir inorden
+    * @param n 
+    */
+    private void inorden(Nodo n) {
+        Document document = (Document) n.getElement();
+        if (n != null) {
+            inorden(n.getIzquierda());
+            n.imprimirDato(); //Imprimir documento
+            inorden(n.getDerecha());
+        }
+    }
+
     
     /**
      * getNodoRaiz
@@ -103,37 +133,11 @@ public class ArbolTDA {
         this.nodoRaiz = nodoRaiz;
     }
     
-    /**
-     * getDerecha
-     * @return the derecha
-     */
-    public Nodo getDerecha() {
-        return derecha;
-    }
 
-    /**
-     * setDerecha
-     * @param derecha the derecha to set
-     */
-    public void setDerecha(Nodo derecha) {
-        this.derecha = derecha;
-    }
 
-    /**
-     * getIzquierda
-     * @return the izquierda
-     */
-    public Nodo getIzquierda() {
-        return izquierda;
-    }
 
-    /**
-     * setIzquierda
-     * @param izquierda the izquierda to set
-     */
-    public void setIzquierda(Nodo izquierda) {
-        this.izquierda = izquierda;
-    }
+
+
     
   
     
