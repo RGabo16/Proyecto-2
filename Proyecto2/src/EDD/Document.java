@@ -13,6 +13,9 @@ public class Document {
     private int size;
     private String type; //Posiblemente un int
     private boolean status;
+    private Document derecha;
+    private Document izquierda;
+    private int fe;
 
     /**
      * Constructor
@@ -101,6 +104,37 @@ public class Document {
     public void setStatus(boolean status) {
         this.status = status;
     } 
+
+    public Document getDerecha() {
+        return derecha;
+    }
+
+    public void setDerecha(Document derecha) {
+        this.derecha = derecha;
+    }
+
+    public Document getIzquierda() {
+        return izquierda;
+    }
+
+    public void setIzquierda(Document izquierda) {
+        this.izquierda = izquierda;
+    }
+    
+    public int getFe() {
+        return fe;
+    }
+
+    public void setFe(int fe) {
+        this.fe = fe;
+    }
+    
+    public void imprimirDoc(Document doc){
+        if (doc!= null){
+            System.out.println(doc.size);
+        }
+            
+    }
          
        
 }

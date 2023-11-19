@@ -10,10 +10,10 @@ package EDD;
  */
 public class Nodo {
     private Object element;
-    private int fe;
     private Nodo pNext;
     private Nodo derecha;
     private Nodo izquierda;
+    private Document doc;
     
     
     public Nodo(Object element, Nodo pNext) {
@@ -30,6 +30,10 @@ public class Nodo {
     public Nodo(Object element) {
         this.element = element;
         this.pNext = null;
+        this.derecha=null;
+        this.izquierda=null;
+
+        this.doc=null;
     }
 
     /**
@@ -62,14 +66,6 @@ public class Nodo {
      */
     public void setpNext(Nodo pNext) {
         this.pNext = pNext;
-    }
-
-    public int getFe() {
-        return fe;
-    }
-
-    public void setFe(int fe) {
-        this.fe = fe;
     }
 
     /**
