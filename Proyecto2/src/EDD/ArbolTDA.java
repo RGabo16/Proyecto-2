@@ -144,7 +144,7 @@ public class ArbolTDA {
      * @param n   
      * @return    
     */
-    public Document rotacionIzquierda(Document n){
+    public Document rotacionDerecha(Document n){
         Document aux=n.getIzquierda();
         n.setIzquierda(aux.getDerecha());
         aux.setDerecha(n);
@@ -158,7 +158,7 @@ public class ArbolTDA {
      * @param n   
      * @return    
     */
-    public Document rotacionDerecha(Document n){
+    public Document rotacionIzquierda(Document n){
         Document aux=n.getDerecha();
         n.setDerecha(aux.getIzquierda());
         aux.setIzquierda(n);
