@@ -195,14 +195,13 @@ public class ArbolTDA {
     * Imprimir inorden
     * @param n 
     */
-//    private void inorden(Nodo n) {
-//        Document document = (Document) n.getElement();
-//        if (n != null) {
-//            inorden(n.getIzquierda());
-//            n.imprimirDato(); //Imprimir documento
-//            inorden(n.getDerecha());
-//        }
-//    }
+    public void inorden(Document n) {
+        if (n != null) {
+            inorden(n.getIzquierda());
+            n.imprimirDoc(n);
+            inorden(n.getDerecha());
+        }
+    }
 
     
     /**
@@ -222,11 +221,4 @@ public class ArbolTDA {
     }
     
 
-
-
-
-
-    
-  
-    
 }

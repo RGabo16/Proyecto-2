@@ -128,7 +128,13 @@ public class Document {
     public void setFe(int fe) {
         this.fe = fe;
     }
-
+    
+    public void imprimirDoc(Document doc){
+        if (doc!= null){
+            System.out.println(doc.size);
+        }
+            
+    }
          
        
 }
