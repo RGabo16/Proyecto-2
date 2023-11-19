@@ -11,10 +11,16 @@ package EDD;
 public class Nodo {
     private Object element;
     private Nodo pNext;
-
+    private Nodo derecha;
+    private Nodo izquierda;
+    private Document doc;
+    
+    
     public Nodo(Object element, Nodo pNext) {
         this.element = element;
         this.pNext = pNext;
+        this.derecha=null;
+        this.izquierda=null;
     }
 
     /**
@@ -24,6 +30,10 @@ public class Nodo {
     public Nodo(Object element) {
         this.element = element;
         this.pNext = null;
+        this.derecha=null;
+        this.izquierda=null;
+
+        this.doc=null;
     }
 
     /**
@@ -56,6 +66,40 @@ public class Nodo {
      */
     public void setpNext(Nodo pNext) {
         this.pNext = pNext;
+    }
+
+    /**
+     * getDerecha
+     * @return the derecha
+     */
+    public Nodo getDerecha() {
+        return derecha;
+    }
+
+
+    /**
+     * setDerecha
+     * @param derecha the derecha to set
+     */
+    public void setDerecha(Nodo derecha) {
+        this.derecha = derecha;
+    }
+
+    /**
+     * getIzquierda
+     * @return the izquierda
+     */
+    public Nodo getIzquierda() {
+        return izquierda;
+    }
+
+   
+    /**
+     * setIzquierda
+     * @param izquierda the izquierda to set
+     */
+    public void setIzquierda(Nodo izquierda) {
+        this.izquierda = izquierda;
     }
     
     
