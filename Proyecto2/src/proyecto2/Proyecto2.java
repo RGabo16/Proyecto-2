@@ -4,8 +4,12 @@
  */
 package proyecto2;
 
+<<<<<<< Updated upstream
 import EDD.ArbolTDA;
 import EDD.Document;
+=======
+import interfaces.MainMenu;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -18,6 +22,7 @@ public class Proyecto2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+<<<<<<< Updated upstream
         ArbolTDA arbolito= new ArbolTDA();
         arbolito.Vacio();
         Document doc = new Document("R",10,"Alta");
@@ -28,6 +33,10 @@ public class Proyecto2 {
         arbolito.insertar(doc1);
         arbolito.insertar(doc2);
         arbolito.inorden(arbolito.getNodoRaiz());
+=======
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+>>>>>>> Stashed changes
     }
     
 }
