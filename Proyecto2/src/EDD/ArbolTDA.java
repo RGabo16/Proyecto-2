@@ -11,12 +11,24 @@ package EDD;
  */
 public class ArbolTDA {
     private Document nodoRaiz;
-
-    
     
     
     public ArbolTDA(){
         nodoRaiz=null;
+    }
+    
+    /**
+     * Vaciar
+     */
+    public void vaciar() {
+	nodoRaiz = null;
+    }
+    /**
+     * Vacio
+     * @return 
+     */
+    public boolean Vacio() {
+	return nodoRaiz == null;
     }
     
     /**
@@ -82,7 +94,7 @@ public class ArbolTDA {
 //    }
     
       private Document insertar(Document Raizdoc,Document doc){
-         Document nuevopadre=Raizdoc;
+         Document nodopadre=Raizdoc;
        if (doc.getSize()> Raizdoc.getSize()) {
             if (Raizdoc.getDerecha() == null) {
                 Raizdoc.setDerecha(doc);
@@ -90,21 +102,28 @@ public class ArbolTDA {
                Raizdoc.setDerecha(insertar(Raizdoc.getDerecha(),doc));
                 if (obtenerFe(Raizdoc.getDerecha())- obtenerFe(Raizdoc.getIzquierda())==2);
                     if (doc.getSize()>Raizdoc.getDerecha().getSize()){
-                        nuevopadre=rotacionDerecha(Raizdoc);
+                        nodopadre=rotacionDerecha(Raizdoc);
                     }else{
-                        nuevopadre=rotacionDobleDerecha(Raizdoc);
-                    }
-                        
-                        
+                        nodopadre=rotacionDobleDerecha(Raizdoc);
+                    }          
             }
-        } else {
+        } else if(doc.getSize()< Raizdoc.getSize()){
             if (Raizdoc.getIzquierda() == null) {
                 Raizdoc.setIzquierda(doc);
             } else {
-                this.insertar(Raizdoc.getIzquierda(),doc);
+                Raizdoc.setIzquierda(insertar(Raizdoc.getIzquierda(),doc));
+                if (obtenerFe(Raizdoc.getIzquierda())- obtenerFe(Raizdoc.getDerecha())==2);
+                    if (doc.getSize()>Raizdoc.getIzquierda().getSize()){
+                        nodopadre=rotacionIzquierda(Raizdoc);
+                    }else{
+                        nodopadre=rotacionDobleIzquierda(Raizdoc);
+                    }                      
             }
+        }else{
+            System.out.println("Documento repetido!!!");
         }
-        return null;
+        
+       return nodopadre;
     }
     
    
@@ -160,7 +179,7 @@ public class ArbolTDA {
         return aux;
     }
     
- /**
+    /**
      * rotacionDobleDerecha
      * @param n   
      * @return    
