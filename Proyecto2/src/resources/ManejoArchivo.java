@@ -51,14 +51,13 @@ public class ManejoArchivo {
 
     /**
      * Leer archivo csv
+     * @param file
      * @return 
      */
-    public Lista read_csv() {
+    public static Lista read_csv(File file) {
         Lista clientes = new Lista();
         String line;
         String file_csv = "";
-        String path = "test//clientes.csv";
-        File file = new File(path);
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -73,7 +72,7 @@ public class ManejoArchivo {
                 if (!"".equals(file_csv)) {
                     String[] user_split = file_csv.split("\n");
                     for (int i = 0; i < user_split.length; i++) {
-                        String[] user_att = user_split[i].split(",");
+                        String[] user_att = user_split[i].split(";");
                         User user = new User(user_att[0], user_att[1]);
                         Nodo newNodo = new Nodo(user);
                         clientes.addAtTheEnd(newNodo);

@@ -4,17 +4,45 @@
  */
 package interfaces;
 
+import EDD.Lista;
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import resources.ManejoArchivo;
+
 /**
  *
  * @author Luriannys Junco
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    Lista carga;
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        Runnable runnable;
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(500);
+                        tagWatch.setText(formatter.format(LocalDateTime.now()));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     /**
@@ -26,31 +54,107 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
+        verArbol = new javax.swing.JButton();
+        cerrar = new javax.swing.JButton();
+        verUsuarios = new javax.swing.JButton();
+        tagWatch = new javax.swing.JLabel();
+        cargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 400));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background.setBackground(new java.awt.Color(94, 105, 116));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/_6b327199-1d6b-4bdc-add3-314a4fe511b4.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 380, 400));
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/_6b327199-1d6b-4bdc-add3-314a4fe511b4.jpeg"))); // NOI18N
+        background.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 380, 400));
+
+        verArbol.setText("Ver Arbol");
+        background.add(verArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, -1, -1));
+
+        cerrar.setText("Cerrar");
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+        background.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
+
+        verUsuarios.setText("Ver Usuarios");
+        verUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verUsuariosActionPerformed(evt);
+            }
+        });
+        background.add(verUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+
+        tagWatch.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
+        tagWatch.setForeground(new java.awt.Color(255, 255, 255));
+        tagWatch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tagWatch.setText("HOUR");
+        tagWatch.setToolTipText("");
+        tagWatch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tagWatch.setMaximumSize(new java.awt.Dimension(50, 30));
+        tagWatch.setMinimumSize(new java.awt.Dimension(50, 30));
+        tagWatch.setName(""); // NOI18N
+        tagWatch.setPreferredSize(new java.awt.Dimension(50, 30));
+        background.add(tagWatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 160, 120));
+
+        cargar.setText("Cargar");
+        cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarActionPerformed(evt);
+            }
+        });
+        background.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed
+        // TODO add your handling code here:
+        try {
+            JFileChooser file = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(".csv", "csv");
+            file.setFileFilter(filter);
+            file.showOpenDialog(cargar);
+            File openFile = file.getSelectedFile();
+            carga = ManejoArchivo.read_csv(openFile);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e + " " + "\nNo se ha encontrado el archivo", "ADVERTENCIA!!!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_cargarActionPerformed
+
+    /**
+     * getCarga
+     * @return carga
+     */
+    public Lista getCarga(){
+        return carga;
+    }
+    
+    private void verUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosActionPerformed
+        // TODO add your handling code here:
+        ViewUsers v = new ViewUsers();
+        v.setVisible(true);
+    }//GEN-LAST:event_verUsuariosActionPerformed
+
+    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_cerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,10 +189,15 @@ public class MainMenu extends javax.swing.JFrame {
                 new MainMenu().setVisible(true);
             }
         });
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel background;
+    private javax.swing.JButton cargar;
+    private javax.swing.JButton cerrar;
+    private javax.swing.JLabel image;
+    private javax.swing.JLabel tagWatch;
+    private javax.swing.JButton verArbol;
+    private javax.swing.JButton verUsuarios;
     // End of variables declaration//GEN-END:variables
 }
