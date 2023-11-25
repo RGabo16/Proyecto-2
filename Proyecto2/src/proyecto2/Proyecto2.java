@@ -26,16 +26,22 @@ public class Proyecto2 {
         ArbolTDA arbolito= new ArbolTDA();
         arbolito.Vacio();
         Document doc = new Document("R",10,"Alta");
-        Document doc1 = new Document("R",11,"Alta");
-        Document doc2 = new Document("R",9,"Alta");
-         Document doc3 = new Document("R",8,"Alta");
+        Document doc1 = new Document("R",5,"Alta");
+        Document doc2 = new Document("R",13,"Alta");
+        Document doc3 = new Document("R",1,"Alta");
+        Document doc4 = new Document("R",6,"Alta");
+        Document doc5 = new Document("R",17,"Alta");
+        arbolito.setNodoRaiz(doc);
+        arbolito.getNodoRaiz().insertar(doc1);
+        arbolito.getNodoRaiz().insertar(doc2);
+        arbolito.getNodoRaiz().insertar(doc3);
+        arbolito.getNodoRaiz().insertar(doc4);
+        arbolito.getNodoRaiz().insertar(doc5);
+//        arbolito.insertar(doc4);
+//        arbolito.insertar(doc5);
+//       
+        
 
-        arbolito.insertar(doc);
-        arbolito.insertar(doc);
-        System.out.println( arbolito.existe(arbolito.getNodoRaiz(),10));
-        arbolito.insertar(doc1);
-        arbolito.insertar(doc2);
-        arbolito.insertar(doc3);
         arbolito.inorden(arbolito.getNodoRaiz());
         
         
