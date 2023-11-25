@@ -135,6 +135,80 @@ public class Document {
         }
             
     }
-         
-       
+    public int obtenerFe(Document doc){
+        if (doc==null)
+            return 0;
+        else
+            return doc.getFe();
+    }
+    public int altura(Document n){
+        return (Math.max(obtenerFe(n.getIzquierda()), obtenerFe(n.getDerecha()))+1);
+    }
+    
+    public int alturaIzq(){
+        if (izquierda==null){
+            return 0;
+        }
+        return izquierda.getFe();
+    }
+    public int alturaDer(){
+        if (derecha==null){
+            return 0;
+        }
+        return derecha.getFe();
+    }
+    public void  rotacionIzquierda(Document n){
+        Document aux=new Document(n.getName(),n.getSize(),n.getType());
+        aux.setIzquierda(n.getIzquierda());
+        aux.setDerecha(n.getDerecha().getIzquierda());
+        n.setSize(n.getDerecha().getSize());
+        n.setDerecha(n.getDerecha().getDerecha());
+        n.setIzquierda(aux);
+        
+    }
+    public void  rotacionDerecha(Document n){
+        Document aux=new Document(n.getName(),n.getSize(),n.getType());
+        aux.setDerecha(n.getDerecha());
+        aux.setIzquierda(n.getIzquierda().getDerecha());
+        n.setSize(n.getIzquierda().getSize());
+        n.setIzquierda(n.getIzquierda().getIzquierda());
+        n.setDerecha(aux);
+        
+    }
+    public Document insertar(Document doc) {
+        if (doc == null) {
+            return doc;
+        }
+        if(doc.getSize()< this.getSize()){
+            if (this.getIzquierda() == null) {
+                this.setIzquierda(doc);
+            }else{
+                this.getIzquierda().insertar(doc);
+            }
+        }else{
+            if (this.getDerecha() == null) {
+                this.setDerecha(doc);
+            }else{
+                this.getDerecha().insertar(doc);
+            }
+        }
+        if(doc.alturaIzq()-doc.alturaDer()>1){
+            if (doc.getIzquierda()!= null && doc.getIzquierda().alturaDer()>doc.getIzquierda().alturaIzq()){
+                rotacionIzquierda(doc.getIzquierda());
+                rotacionDerecha(doc);
+            }else{
+                rotacionDerecha(doc);
+            }
+            return doc;
+        }
+        if(doc.alturaDer()-doc.alturaIzq()>1){
+            if (doc.getDerecha()!= null && doc.getDerecha().alturaIzq()>doc.getDerecha().alturaDer()){
+                rotacionDerecha(doc.getDerecha());
+                rotacionIzquierda(doc);
+            }else{
+                rotacionIzquierda(doc);
+            }
+        }   
+        return doc;
+    }
 }
