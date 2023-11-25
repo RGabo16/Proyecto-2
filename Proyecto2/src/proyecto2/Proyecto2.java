@@ -26,7 +26,7 @@ public class Proyecto2 {
         Document doc3 = new Document("R",1,"Alta");
         Document doc4 = new Document("R",6,"Alta");
         Document doc5 = new Document("R",17,"Alta");
-        arbolito.getNodoRaiz().insertar(doc);
+        arbolito.setNodoRaiz(doc);
         arbolito.getNodoRaiz().insertar(doc1);
         arbolito.getNodoRaiz().insertar(doc2);
         arbolito.getNodoRaiz().insertar(doc3);
