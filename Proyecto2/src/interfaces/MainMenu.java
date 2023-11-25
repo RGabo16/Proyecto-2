@@ -20,6 +20,7 @@ import resources.ManejoArchivo;
 public class MainMenu extends javax.swing.JFrame {
 
     Lista carga;
+
     /**
      * Creates new form MainMenu
      */
@@ -141,10 +142,10 @@ public class MainMenu extends javax.swing.JFrame {
      * getCarga
      * @return carga
      */
-    public Lista getCarga(){
+    public Lista getCarga() {
         return carga;
     }
-    
+
     private void verUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosActionPerformed
         // TODO add your handling code here:
         ViewUsers v = new ViewUsers();
@@ -189,7 +190,7 @@ public class MainMenu extends javax.swing.JFrame {
                 new MainMenu().setVisible(true);
             }
         });
-    }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
