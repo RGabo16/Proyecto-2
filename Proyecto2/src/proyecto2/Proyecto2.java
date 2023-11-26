@@ -8,6 +8,7 @@ import EDD.ArbolTDA;
 import EDD.Document;
 import EDD.Hashtable;
 import EDD.User;
+import interfaces.MainMenu;
 
 /**
  *
@@ -20,6 +21,10 @@ public class Proyecto2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        
         ArbolTDA arbolito= new ArbolTDA();
         arbolito.Vacio();
         Document doc = new Document("R",10,"Alta");
@@ -45,6 +50,7 @@ public class Proyecto2 {
         tabla.insertar(a);
    
        
+
     }
     
 }

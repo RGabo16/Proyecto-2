@@ -28,6 +28,9 @@ public class Document {
         this.size = size;
         this.type = type;
         this.status = false; //No esta en la cola de impresion
+        this.derecha=null;
+        this.izquierda=null;
+        this.fe=0;
     }
 
     /**
@@ -35,12 +38,12 @@ public class Document {
      * @param name
      * @param size
      */
-    public Document(String name, int size) {
-         this.name = name;
-        this.size = size;
-        this.type = "";
-        this.status = false; //No esta en la cola de impresion
-    }
+//    public Document(String name, int size) {
+//         this.name = name;
+//        this.size = size;
+//        this.type = "";
+//        this.status = false; //No esta en la cola de impresion
+//    }
 
     /**
      * getName
