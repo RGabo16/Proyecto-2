@@ -6,6 +6,8 @@ package proyecto2;
 
 import EDD.ArbolTDA;
 import EDD.Document;
+import EDD.Hashtable;
+import EDD.User;
 
 /**
  *
@@ -31,12 +33,16 @@ public class Proyecto2 {
         arbolito.getNodoRaiz().insertar(doc2);
         arbolito.getNodoRaiz().insertar(doc3);
         arbolito.getNodoRaiz().insertar(doc4);
-        arbolito.getNodoRaiz().insertar(doc5);
-//        arbolito.insertar(doc4);
-//        arbolito.insertar(doc5);
-//       
-        
+        arbolito.getNodoRaiz().insertar(doc5);       
         arbolito.inorden(arbolito.getNodoRaiz());
+        
+        User a=new User("a","a");
+        User b=new User("b","b");
+        
+        Hashtable tabla= new Hashtable(10,1,1); 
+        for (int i=0 ;i<=tabla.getSize();i++){
+            tabla.insertar(i);
+        }
     }
     
 }
