@@ -10,6 +10,9 @@ import EDD.User;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Vector;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -67,6 +70,8 @@ public class MainMenu extends javax.swing.JFrame {
         cargar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
+        deleteUser = new javax.swing.JButton();
+        addUser = new javax.swing.JButton();
         ColaImpresion = new javax.swing.JPanel();
         verArbol = new javax.swing.JButton();
         tagWatch = new javax.swing.JLabel();
@@ -112,6 +117,17 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableUsers);
 
         Usuarios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 160));
+
+        deleteUser.setText("Eliminar Usuario");
+        Usuarios.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
+
+        addUser.setText("Agregar Usuario");
+        addUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserActionPerformed(evt);
+            }
+        });
+        Usuarios.add(addUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
         jTabbedPane1.addTab("Usuarios", Usuarios);
 
@@ -201,6 +217,19 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_verArbolActionPerformed
 
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        String nameUser = JOptionPane.showInputDialog("Nombre de usuario: ");
+        String [] priorities = {"prioridad_alta", "prioridad_media", "prioridad_baja"};
+        JComboBox election = new JComboBox();
+        election.addItem(priorities);
+        String priorityUser = JOptionPane.showInputDialog(election, "Prioridad: ");
+        carga.addAtTheEnd(new Nodo(User(nameUser, priorityUser)));
+        
+    }//GEN-LAST:event_addUserActionPerformed
+
+    public Lista getCarga(){
+        return carga;
+    }
     /**
      * @param args the command line arguments
      */
@@ -245,9 +274,11 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ColaImpresion;
     private javax.swing.JPanel Usuarios;
+    private javax.swing.JButton addUser;
     private javax.swing.JPanel background;
     private javax.swing.JButton cargar;
     private javax.swing.JButton cerrar;
+    private javax.swing.JButton deleteUser;
     private javax.swing.JLabel image;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
