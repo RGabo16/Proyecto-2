@@ -48,11 +48,11 @@ public class ManejoArchivo {
 //            JOptionPane.showMessageDialog(null, e);
 //        }
 //    }
-
     /**
      * Leer archivo csv
+     *
      * @param file
-     * @return 
+     * @return
      */
     public static Lista read_csv(File file) {
         Lista clientes = new Lista();

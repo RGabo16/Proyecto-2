@@ -5,12 +5,15 @@
 package interfaces;
 
 import EDD.Lista;
+import EDD.Nodo;
+import EDD.User;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import resources.ManejoArchivo;
 
 /**
@@ -19,7 +22,8 @@ import resources.ManejoArchivo;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    Lista carga;
+    DefaultTableModel table = new DefaultTableModel();
+    public Lista carga;
 
     /**
      * Creates new form MainMenu
@@ -57,22 +61,23 @@ public class MainMenu extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        verArbol = new javax.swing.JButton();
         cerrar = new javax.swing.JButton();
-        verUsuarios = new javax.swing.JButton();
-        tagWatch = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        Usuarios = new javax.swing.JPanel();
         cargar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUsers = new javax.swing.JTable();
+        ColaImpresion = new javax.swing.JPanel();
+        verArbol = new javax.swing.JButton();
+        tagWatch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBackground(new java.awt.Color(94, 105, 116));
+        background.setBackground(new java.awt.Color(61, 69, 76));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/_6b327199-1d6b-4bdc-add3-314a4fe511b4.jpeg"))); // NOI18N
-        background.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 380, 400));
-
-        verArbol.setText("Ver Arbol");
-        background.add(verArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, -1, -1));
+        background.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 240, 20));
 
         cerrar.setText("Cerrar");
         cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,15 +85,51 @@ public class MainMenu extends javax.swing.JFrame {
                 cerrarActionPerformed(evt);
             }
         });
-        background.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
+        background.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, -1));
 
-        verUsuarios.setText("Ver Usuarios");
-        verUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        Usuarios.setBackground(new java.awt.Color(94, 105, 116));
+        Usuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cargar.setText("Cargar");
+        cargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verUsuariosActionPerformed(evt);
+                cargarActionPerformed(evt);
             }
         });
-        background.add(verUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+        Usuarios.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+
+        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Usuarios", "Prioridad", "Documentos"
+            }
+        ));
+        jScrollPane1.setViewportView(tableUsers);
+
+        Usuarios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 160));
+
+        jTabbedPane1.addTab("Usuarios", Usuarios);
+
+        ColaImpresion.setBackground(new java.awt.Color(94, 105, 116));
+        ColaImpresion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        verArbol.setText("Ver Arbol");
+        verArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verArbolActionPerformed(evt);
+            }
+        });
+        ColaImpresion.add(verArbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
+
+        jTabbedPane1.addTab("Cola de impresion", ColaImpresion);
+
+        background.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 460));
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Usuarios");
 
         tagWatch.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
         tagWatch.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,21 +141,13 @@ public class MainMenu extends javax.swing.JFrame {
         tagWatch.setMinimumSize(new java.awt.Dimension(50, 30));
         tagWatch.setName(""); // NOI18N
         tagWatch.setPreferredSize(new java.awt.Dimension(50, 30));
-        background.add(tagWatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 160, 120));
-
-        cargar.setText("Cargar");
-        cargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarActionPerformed(evt);
-            }
-        });
-        background.add(cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+        background.add(tagWatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 160, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,37 +158,48 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarActionPerformed
-        // TODO add your handling code here:
         try {
             JFileChooser file = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(".csv", "csv");
             file.setFileFilter(filter);
-            file.showOpenDialog(cargar);
+            file.showOpenDialog(this);
             File openFile = file.getSelectedFile();
             carga = ManejoArchivo.read_csv(openFile);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e + " " + "\nNo se ha encontrado el archivo", "ADVERTENCIA!!!", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_cargarActionPerformed
-
-    /**
-     * getCarga
-     * @return carga
-     */
-    public Lista getCarga() {
-        return carga;
+        updateTable();
     }
 
-    private void verUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosActionPerformed
-        // TODO add your handling code here:
-        ViewUsers v = new ViewUsers();
-        v.setVisible(true);
-    }//GEN-LAST:event_verUsuariosActionPerformed
-
+    public void updateTable() {
+        String ids[] = {"Usuarios", "Prioridad", "Documentos"};
+        table.setColumnIdentifiers(ids);
+        tableUsers.setModel(table);
+        tableUsers.setEnabled(false);
+        if (carga != null) {
+            String info[] = new String[carga.getSize()];
+            Nodo nodo;
+            nodo = carga.getpFirst().getpNext();
+            for (int i = 1; i < info.length; i++) {
+                User element = (User) nodo.getElement();
+                info[0] = element.getUsuario();
+                info[1] = element.getTipo();
+                info[2] = carga.printString();
+                table.addRow(info);
+                nodo = nodo.getpNext();
+            }
+        } else {
+            String message[] = {"No hay usuarios"};
+            table.addRow(message);
+    }//GEN-LAST:event_cargarActionPerformed
+    }
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_cerrarActionPerformed
+
+    private void verArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verArbolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verArbolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,34 +215,44 @@ public class MainMenu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainMenu().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ColaImpresion;
+    private javax.swing.JPanel Usuarios;
     private javax.swing.JPanel background;
     private javax.swing.JButton cargar;
     private javax.swing.JButton cerrar;
     private javax.swing.JLabel image;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tableUsers;
     private javax.swing.JLabel tagWatch;
     private javax.swing.JButton verArbol;
-    private javax.swing.JButton verUsuarios;
     // End of variables declaration//GEN-END:variables
 }
