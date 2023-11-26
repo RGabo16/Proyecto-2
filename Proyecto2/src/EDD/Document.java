@@ -228,10 +228,5 @@ public class Document {
             return existe(doc.getIzquierda(), doc);
         }
     }
-    public void eliminarmin(Document rdoc){
-        rdoc.getIzquierda();
-            
-        
-        
-    }
+    
 }

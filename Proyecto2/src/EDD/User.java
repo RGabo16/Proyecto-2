@@ -5,6 +5,8 @@
  */
 package EDD;
 
+import java.util.Objects;
+
 /**
  *
  * @author rgabr
@@ -14,6 +16,10 @@ public class User {
     private String tipo ;
     private Lista documentos;
     private User pNext;
+    private int num;
+    
+    
+    
 
     /**
      * Constructor
@@ -38,6 +44,7 @@ public class User {
         this.tipo = tipo;
         this.documentos = null;
         this. pNext = null;
+        this.num=0;
     }
     
     /**
