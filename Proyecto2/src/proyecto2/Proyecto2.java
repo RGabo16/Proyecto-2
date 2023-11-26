@@ -39,10 +39,12 @@ public class Proyecto2 {
         User a=new User("a","a");
         User b=new User("b","b");
         
-        Hashtable tabla= new Hashtable(10,1,1); 
-        for (int i=0 ;i<=tabla.getSize();i++){
-            tabla.insertar(i);
-        }
+        Hashtable tabla=new Hashtable();
+        tabla.insertar(b);
+        tabla.buscar(b.getUsuario());
+        tabla.insertar(a);
+   
+       
     }
     
 }

@@ -10,65 +10,101 @@ package EDD;
  * @author rgabr
  */
 public class Hashtable {
-    static final int size=101; // se decide de un principio
+    public static final int tamanio=101; // se decide de un principio
     private int numElem;
     private User [] tabla;
-    
-    int key;//se deduce con el valor del usuario entre el size
-    int value;//todo lo que tenga el usuario
+    private double factorCarga;
 
-    public Hashtable(int size, int key, int value) {
-        
-        this.key = key;
-        this.value = value;
+    public Hashtable() {
+        this.numElem = 0;
+        this.tabla = new User[tamanio];
+        for (int i =0;i<tamanio;i++){
+            tabla[i]=null;
+        }
+        this.factorCarga = 0.0;
     }
+
+    
+    
+    
+        
     public int index(String clave){
         int i=0,p;
         int d;
         d =transformarCadena(clave);
         p=hash(d);
-        
         return p;
     }
     public int transformarCadena(String c){
         int d;
         d=0;
-        for (int i =0 ;i< Math.min(10, c.length());i++){
+        for (int i =0 ;i< c.length();i++){
             d=d*27+(int)c.charAt(i);
         }
         if(d<0){
             d=-d;
         }
         return d;
-        
     }
+    
     private int hash(int k){
+        int key=k%tamanio;
+        return key;
+    }
+    
+    public void insertar(User r){
+        int posicion;
+        posicion=index(r.getUsuario());
+        this.tabla[posicion]=r;
+        numElem++;
+        setFactorCarga(getNumElem()/getTamanio());
+        if(getFactorCarga()>0.5){
+            System.out.println("\n Factor de carga supera el 50%");
+        }
+    }
         
-        int key=k%size;
-        return key;
+    public User buscar(String clave){
+        User pr;
+        int posicion;
+        posicion= index(clave);
+        pr=tabla [posicion];
+        return pr;
     }
-    public void insertar(int k){
-        System.out.println(k+" tiene el hash "+hash(k));
+    
+    public void eliminar(String clave){
+        int posicion;
+        posicion= index(clave);
+        
+        
     }
-
-    public int getSize() {
-        return size;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getValue() {
-        return value;
+       
+    public static int getTamanio() {
+        return tamanio;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public int getNumElem() {
+        return numElem;
     }
+
+    public void setNumElem(int numElem) {
+        this.numElem = numElem;
+    }
+
+    public User[] getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(User[] tabla) {
+        this.tabla = tabla;
+    }
+
+    public double getFactorCarga() {
+        return factorCarga;
+    }
+
+    public void setFactorCarga(double factorCarga) {
+        this.factorCarga = factorCarga;
+    }
+    
     
 }
