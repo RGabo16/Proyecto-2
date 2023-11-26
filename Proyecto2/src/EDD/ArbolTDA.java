@@ -37,20 +37,7 @@ public class ArbolTDA {
      * @param busqueda
      * @return 
      */
-    public boolean existe(Document doc, int busqueda){
-//        Document document = (Document) nodo.getElement();
-        if (this.getNodoRaiz() == null){
-            return false;
-        }
-        if (doc.getSize() == busqueda){
-            return true;
-        }
-        else if (doc.getSize() < busqueda){
-            return existe(doc.getDerecha(), busqueda);
-        }else{
-            return existe(doc.getIzquierda(), busqueda);
-        }
-    }
+   
         /**
     * Imprimir inorden
     * @param n 

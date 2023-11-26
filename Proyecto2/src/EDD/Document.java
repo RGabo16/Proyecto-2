@@ -214,4 +214,24 @@ public class Document {
         }   
         return doc;
     }
+     public boolean existe(Document rdoc,Document doc){
+//        Document document = (Document) nodo.getElement();
+        if (rdoc == null){
+            return false;
+        }
+        if (rdoc.getSize() == doc.getSize()){
+            return true;
+        }
+        else if (doc.getSize() < doc.getSize()){
+            return existe(doc.getDerecha(), doc);
+        }else{
+            return existe(doc.getIzquierda(), doc);
+        }
+    }
+    public void eliminarmin(Document rdoc){
+        rdoc.getIzquierda();
+            
+        
+        
+    }
 }
