@@ -55,12 +55,13 @@ public class Lista {
         }
         size++;
     }
-    
+
     /**
      * Metodo que agrega un nodo al inicio de la lista
-     * @param newNodo 
+     *
+     * @param newNodo
      */
-    public void addAtTheStart(Nodo newNodo){
+    public void addAtTheStart(Nodo newNodo) {
         if (this.isEmpty()) {
             pFirst = pLast = newNodo;
         } else {
@@ -71,11 +72,11 @@ public class Lista {
     }
 
     /**
-     *Metodo que elimina un nodo al inicio de la lista
+     * Metodo que elimina un nodo al inicio de la lista
      */
-    public void DeleteAtTheStart(){
-        if(!this.isEmpty()){
-            if(size == 1){
+    public void DeleteAtTheStart() {
+        if (!this.isEmpty()) {
+            if (size == 1) {
                 this.empty();
             } else {
                 pFirst = pFirst.getpNext();
@@ -83,30 +84,52 @@ public class Lista {
             }
         }
     }
-    
+
     /**
      * Metodo que imprime cada nodo de la lista
      */
-    public void print(){
+    public void print() {
+        User element;
         Nodo temp = pFirst;
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             System.out.println("The list is empty.");
         }
-        while(temp != null){
-            System.out.println(temp);
+        while (temp != null) {
+            element = (User) temp.getElement();
+            element.print();
             temp = temp.getpNext();
         }
     }
 
     /**
-     * @return pFirst
+     * Metodo que retorna los elementos como un string separado por comas
+     *
+     * @return
      */
+    public String printString() {
+        Document element;
+        String str = "";
+        User user = (User) getpFirst().getpNext().getElement();
+        Lista list = user.getDocumentos();
+        if (list != null) {
+            Nodo temp = list.getpFirst();
+            while (temp != null) {
+                element = (Document) temp.getElement();
+                str += element.getName() + ",";
+                temp = temp.getpNext();
+            }
+        }
+        return str;
+    }
+        /**
+         * @return pFirst
+         */
     public Nodo getpFirst() {
         return pFirst;
     }
 
     /**
-     * @param pFirst 
+     * @param pFirst
      */
     public void setpFirst(Nodo pFirst) {
         this.pFirst = pFirst;
@@ -120,7 +143,7 @@ public class Lista {
     }
 
     /**
-     * @param pLast 
+     * @param pLast
      */
     public void setpLast(Nodo pLast) {
         this.pLast = pLast;
@@ -134,11 +157,10 @@ public class Lista {
     }
 
     /**
-     * @param size 
+     * @param size
      */
     public void setSize(int size) {
         this.size = size;
     }
-    
-    
+
 }

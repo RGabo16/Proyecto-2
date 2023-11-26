@@ -13,9 +13,12 @@ public class Nodo {
     private Nodo pNext;
     private Nodo derecha;
     private Nodo izquierda;
-    private Document doc;
     
-    
+/**
+ * Constructor
+ * @param element
+ * @param pNext 
+ */    
     public Nodo(Object element, Nodo pNext) {
         this.element = element;
         this.pNext = pNext;
@@ -33,7 +36,6 @@ public class Nodo {
         this.derecha=null;
         this.izquierda=null;
 
-        this.doc=null;
     }
 
     /**
