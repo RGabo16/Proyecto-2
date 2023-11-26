@@ -4,8 +4,13 @@
  */
 package proyecto2;
 
+import EDD.ArbolTDA;
+import EDD.Document;
+import EDD.Hashtable;
+import EDD.User;
 //import EDD.ArbolTDA;
 //import EDD.Document;
+
 import interfaces.MainMenu;
 
 /**
@@ -23,6 +28,7 @@ public class Proyecto2 {
         MainMenu m = new MainMenu();
         m.setVisible(true);
         
+       
 //        ArbolTDA arbolito= new ArbolTDA();
 //        arbolito.Vacio();
 //        Document doc = new Document("R",10,"Alta");
@@ -43,8 +49,18 @@ public class Proyecto2 {
 //        
 //
 //        arbolito.inorden(arbolito.getNodoRaiz());
+
         
+        User a=new User("a","a");
+        User b=new User("b","b");
         
+        Hashtable tabla=new Hashtable();
+        tabla.insertar(b);
+        tabla.buscar(b.getUsuario());
+        tabla.insertar(a);
+   
+       
+
     }
     
 }
