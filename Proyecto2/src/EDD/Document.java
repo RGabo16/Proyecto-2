@@ -228,5 +228,15 @@ public class Document {
             return existe(doc.getIzquierda(), doc);
         }
     }
-    
+     
+     public int nodosCompletos(Document n){
+        if(n==null)
+            return 0;
+        else {
+            if (n.getIzquierda()!= null && n.getDerecha()!= null){
+                return nodosCompletos(n.getIzquierda())+ nodosCompletos(n.getDerecha())+1;
+            }
+            return nodosCompletos(n.getIzquierda())+ nodosCompletos(n.getDerecha());      
+        }
+    }
 }
