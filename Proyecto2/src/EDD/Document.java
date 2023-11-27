@@ -307,9 +307,9 @@ public class Document {
     public boolean mayorIgualQue(Document q) {
         Document n2 = q;
         return this.priority >= n2.getPriority();
-
+    }
      
-     public int nodosCompletos(Document n){
+    public int nodosCompletos(Document n){
         if(n==null)
             return 0;
         else {
